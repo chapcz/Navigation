@@ -21,7 +21,7 @@ abstract class BaseControl extends Control
 	private $rootItem;
 
 
-	function __construct(Item $rootItem)
+	public function __construct(Item $rootItem)
 	{
 		$this->rootItem = $rootItem;
 	}
@@ -33,7 +33,8 @@ abstract class BaseControl extends Control
 		if (!array_key_exists('translate', $template->getLatte()->getFilters())) {
 			$template->addFilter('translate', function($str){return $str;});
 		}
-		$file = $this->templateFile ? $this->templateFile : __DIR__ . "/templates/{$this->reflection->shortName}.latte";
+        $reflection = new \ReflectionClass($this);
+		$file = $this->templateFile ? $this->templateFile : __DIR__ . "/templates/{$reflection->getShortName()}.latte";
 		$template->setFile($file);
 		return $template;
 	}

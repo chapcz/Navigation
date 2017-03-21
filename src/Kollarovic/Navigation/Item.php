@@ -8,21 +8,8 @@ use Nette\Utils\Validators;
 
 
 /**
- * @method Item setLinkArgs(mixed $linkArgs)
- * @method Item setActive(boolean $active)
- * @method Item setCurrent(boolean $current)
- * @method Item setValue(mixed $value)
- * @method Item setIcon(string $icon)
- * @method Item setOptions(array $options)
- *
- * @method string getName()
- * @method string getLabel()
- * @method string getLink()
- * @method mixed getLinkArgs()
- * @method string getIcon()
- * @method string getResource()
- * @method boolean isActive()
- * @method boolean isCurrent()
+ * Class Item
+ * @package Kollarovic\Navigation
  */
 class Item extends Object implements \ArrayAccess
 {
@@ -175,12 +162,12 @@ class Item extends Object implements \ArrayAccess
 	{
 		$items = [];
 		foreach ($this->getItems(TRUE) as $item) {
-			if ($item->isCurrent() or $item->isOpen()) {
-				$items[$item->link . http_build_query((array)$item->linkArgs)] = $item;
+			if ($item->isCurrent() || $item->isOpen()) {
+				$items[$item->link] = $item;
 			}
 		}
 		if ($items) {
-			$items = [$this->link . http_build_query((array)$item->linkArgs) => $this] + $items;
+			$items = [$this->link => $this] + $items;
 		}
 		return $items;
 	}
@@ -260,5 +247,62 @@ class Item extends Object implements \ArrayAccess
 	{
 		unset($this->items[$offset]);
 	}
+
+    public function setLinkArgs( $linkArgs)
+    {
+        $this->linkArgs = $linkArgs;
+    }
+    public function setActive( $active)
+    {
+        $this->active = $active;
+    }
+    public function setCurrent( $current)
+    {
+        $this->current = $current;
+    }
+    public function setValue( $value)
+    {
+        $this->value = $value;
+    }
+    public function setIcon( $icon)
+    {
+        $this->icon = $icon;
+    }
+    public function setOptions( $options)
+    {
+        $this->options = $options;
+    }
+    public function getName()
+    {
+        return $this->name;
+    }
+    public function getLabel()
+    {
+        return $this->label;
+    }
+    public function getLink()
+    {
+        return $this->link;
+    }
+    public function getLinkArgs()
+    {
+        return $this->linkArgs;
+    }
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+    public function getResource()
+    {
+        return $this->resource;
+    }
+    public function isActive()
+    {
+        return $this->active;
+    }
+    public function isCurrent()
+    {
+        return $this->current;
+    }
 
 }
