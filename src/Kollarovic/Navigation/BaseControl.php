@@ -70,5 +70,21 @@ abstract class BaseControl extends Control
 			}
 		}
 	}
+	
+	/**
+	* @return string
+	*/
+	public function getTemplateFile()
+	{
+		return $this->templateFile;
+	}
+
+	/**
+	 * @param string $templateFile
+	*/
+	public function setTemplateFile($templateFile)
+	{
+		$this->templateFile = $templateFile;
+	}
 
 }
