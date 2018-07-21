@@ -3,7 +3,7 @@
 namespace Kollarovic\Navigation;
 
 use Nette\InvalidArgumentException;
-use Nette\Object;
+use Nette\SmartObject;
 use Nette\Utils\Validators;
 
 
@@ -11,8 +11,9 @@ use Nette\Utils\Validators;
  * Class Item
  * @package Kollarovic\Navigation
  */
-class Item extends Object implements \ArrayAccess
+class Item implements \ArrayAccess
 {
+    use SmartObject;
 
 	/** @var string */
 	private $name;
