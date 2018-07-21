@@ -10,6 +10,12 @@ use Nette\Utils\Validators;
 /**
  * Class Item
  * @package Kollarovic\Navigation
+ * @property string $link
+ * @property string $label
+ * @property string $icon
+ * @property mixed $linkArgs
+ * @property string $resource
+ * @property string $value
  */
 class Item implements \ArrayAccess
 {
